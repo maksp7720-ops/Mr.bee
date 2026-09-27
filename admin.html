@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Админ-панель — Mr.Bee</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-protected="true">
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="img/logo.svg" alt="Mr.Bee" class="brand-logo" />
+      Mr.Bee
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Каталог</a>
+      <a href="dashboard.html">Кабинет</a>
+    </nav>
+    <div class="toolbar-spacer"></div>
+    <div class="header-actions">
+      <div id="authArea"></div>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding:44px 24px 80px">
+
+  <div id="authGate" class="auth-gate" hidden>
+    <h2>Доступ только для администраторов</h2>
+    <p class="muted" id="gateMessage">Войдите под учётной записью с ролью admin.</p>
+    <button class="btn btn-primary" id="gateLoginBtn">Войти</button>
+  </div>
+
+  <div id="adminContent" hidden>
+    <h1>Админ-панель</h1>
+
+    <div class="tab-nav">
+      <button class="active" data-tab="products">Товары</button>
+      <button data-tab="orders">Заказы</button>
+      <button data-tab="users">Пользователи</button>
+      <button data-tab="moderation">Модерация</button>
+      <button data-tab="stats">Статистика</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-products">
+      <div style="display:flex;justify-content:space-between;margin-bottom:16px;gap:10px;flex-wrap:wrap">
+        <span class="muted" id="productsCount"></span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-outline btn-sm" id="recalcRatingsBtn">Пересчитать рейтинги</button>
+          <button class="btn btn-primary btn-sm" id="addProductBtn">+ Добавить товар</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table id="productsTable">
+        <thead><tr><th>Товар</th><th>Категория</th><th>Цена</th><th>Остаток</th><th>Рейтинг</th><th></th></tr></thead>
+        <tbody id="productsBody"></tbody>
+      </table></div>
+      <div class="load-more-row"><button class="btn btn-outline" id="loadMoreProductsBtn" hidden>Показать ещё</button></div>
+    </div>
+
+    <div class="tab-panel" id="tab-orders">
+      <p class="muted" style="margin-top:0">Обновляется в реальном времени — показаны последние 100 заказов.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>№ / Дата</th><th>Покупатель</th><th>Адрес</th><th>Состав заказа</th><th>Сумма</th><th>Статус</th><th></th></tr></thead>
+        <tbody id="ordersBody"></tbody>
+      </table></div>
+    </div>
+
+    <div class="tab-panel" id="tab-users">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Имя</th><th>Email</th><th>Роль</th><th></th></tr></thead>
+        <tbody id="usersBody"></tbody>
+      </table></div>
+      <div class="load-more-row"><button class="btn btn-outline" id="loadMoreUsersBtn" hidden>Показать ещё</button></div>
+    </div>
+
+    <div class="tab-panel" id="tab-moderation">
+      <div id="moderationList"></div>
+      <div class="load-more-row"><button class="btn btn-outline" id="loadMoreModerationBtn" hidden>Показать ещё</button></div>
+    </div>
+
+    <div class="tab-panel" id="tab-stats">
+      <div class="stat-grid" id="statGrid"></div>
+    </div>
+  </div>
+</main>
+
+<div id="modalRoot"></div>
+<div id="toast-wrap"></div>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

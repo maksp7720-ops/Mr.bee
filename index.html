@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mr.Bee — мёд с семейной пасеки</title>
+<meta name="description" content="Настоящий мёд с собственной пасеки: липовый, гречишный, акациевый и другие сорта. Свежая откачка, доставка по России." />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="img/logo.svg" alt="Mr.Bee" class="brand-logo" />
+      Mr.Bee
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Каталог</a>
+      <a href="index.html#about">О пасеке</a>
+      <a href="index.html#gallery">Галерея</a>
+      <a href="index.html#reviews">Отзывы</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <form class="header-search" id="headerSearchForm">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="headerSearchInput" placeholder="Найти мёд…" autocomplete="off" />
+      <div class="search-dropdown" id="searchDropdown" hidden></div>
+    </form>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" title="Корзина">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="badge" id="cartBadge" hidden>0</span>
+      </a>
+      <div id="authArea"></div>
+      <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Меню">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg-pattern hex-pattern"></div>
+  <img src="img/hero-bg.jpg" alt="" class="hero-bg-photo" />
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-island">
+      <div class="hero-eyebrow">Пасека в третьем поколении, Меркенский район</div>
+      <h1>Мёд, который сегодня утром ещё был в улье</h1>
+      <p class="lead">Мы держим 140 семей на разнотравье и липе, качаем мёд сами и разливаем в тот же день. Без пастеризации, без смешивания партий, без посредников.</p>
+      <div class="btn-row">
+        <a href="#catalog" class="btn btn-primary">Выбрать мёд</a>
+        <a href="#about" class="btn btn-outline">О пасеке</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>7</strong><span>сортов мёда</span></div>
+        <div><strong>2.4 т</strong><span>собрано за сезон</span></div>
+        <div><strong>96%</strong><span>клиентов возвращаются</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container" id="catalog" style="padding-top:68px">
+  <div class="section-head">
+    <div>
+      <h2>Каталог</h2>
+      <p>Свежий мёд урожая этого года, развесы от 250 г</p>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="chip-group" id="categoryChips"></div>
+    <select id="tagSelect" aria-label="Особенности"></select>
+    <div class="toolbar-spacer"></div>
+    <span class="result-count" id="resultCount"></span>
+    <select id="sortSelect" aria-label="Сортировка">
+      <option value="createdAt:desc">Сначала новые</option>
+      <option value="price:asc">Сначала дешевле</option>
+      <option value="price:desc">Сначала дороже</option>
+      <option value="rating:desc">По рейтингу</option>
+    </select>
+  </div>
+
+  <div class="grid" id="productGrid"></div>
+  <div class="empty-state" id="emptyState" hidden>
+    <h3>Ничего не нашлось</h3>
+    <p class="mt-0">Попробуйте изменить запрос или сбросить фильтры.</p>
+  </div>
+  <div class="load-more-row">
+    <button class="btn btn-outline" id="loadMoreBtn" hidden>Показать ещё</button>
+  </div>
+</main>
+
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-photos">
+      <div class="photo-frame" data-label="Фото пасеки">
+        <img src="img/about-1.jpg" alt="Пасека" loading="lazy" />
+      </div>
+      <div class="photo-frame" data-label="Рамка с сотами">
+        <img src="img/about-2.jpg" alt="Рамка с мёдом" loading="lazy" />
+      </div>
+    </div>
+    <div>
+      <div class="hero-eyebrow">О пасеке</div>
+      <h2>Семейное дело с 1994 года</h2>
+      <p>Пасеку начинал ещё дед — с шести ульев в саду. Сейчас у нас 140 семей на трёх точках: в липовой роще, на разнотравье и рядом с гречишным полем соседнего хозяйства.</p>
+      <p>Мёд не нагреваем и не смешиваем партии: то, что вы видите в карточке товара — конкретная откачка с конкретной пасеки. Каждая партия проходит анализ на диастазу и отсутствие примесей.</p>
+      <a href="#catalog" class="btn btn-dark">Смотреть каталог</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>Почему нам доверяют</h2></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--honey-dark)" stroke-width="1.8"><path d="M12 2v6M12 22c4-4 7-8 7-12a7 7 0 1 0-14 0c0 4 3 8 7 12Z"/></svg>
+        <h3>Без добавок</h3>
+        <p class="muted">Никакого сахарного сиропа и патоки — только то, что собрали пчёлы.</p>
+      </div>
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--honey-dark)" stroke-width="1.8"><path d="M9 3h6M10 3v6l-6 10a1 1 0 0 0 1 1.5h14a1 1 0 0 0 1-1.5L14 9V3"/></svg>
+        <h3>Лабораторный анализ</h3>
+        <p class="muted">Каждая партия проверяется на диастазное число и натуральность.</p>
+      </div>
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--honey-dark)" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
+        <h3>Свои пасеки</h3>
+        <p class="muted">Без посредников и перекупщиков — от улья сразу к вам.</p>
+      </div>
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--honey-dark)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <h3>Свежая откачка</h3>
+        <p class="muted">Отправляем мёд урожая текущего сезона, дата откачки — в описании.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Пасека в фотографиях</h2>
+        <p>Замените любое фото своим — просто положите файл с тем же именем в папку <code>img/</code></p>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="photo-frame" data-label="Пасека утром"><img src="img/gallery-1.jpg" alt="Пасека" loading="lazy" /></div>
+      <div class="photo-frame" data-label="Соты крупным планом"><img src="img/gallery-2.jpg" alt="Соты" loading="lazy" /></div>
+      <div class="photo-frame" data-label="Разлив мёда"><img src="img/gallery-3.jpg" alt="Разлив мёда" loading="lazy" /></div>
+      <div class="photo-frame" data-label="Рамка с мёдом"><img src="img/gallery-4.jpg" alt="Рамка с мёдом" loading="lazy" /></div>
+      <div class="photo-frame" data-label="Сбор урожая"><img src="img/gallery-5.jpg" alt="Сбор урожая" loading="lazy" /></div>
+      <div class="photo-frame" data-label="Баночки мёда"><img src="img/gallery-6.jpg" alt="Баночки мёда" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>Что говорят покупатели</h2></div>
+    </div>
+    <div id="reviewsStrip" style="display:flex;gap:18px;overflow-x:auto;padding-bottom:8px"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="contacts">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:var(--ivory)">
+          <img src="img/logo.svg" alt="Mr.Bee" class="brand-logo" /> Mr.Bee
+        </a>
+        <p style="color:var(--ivory-deep);opacity:.8;margin:14px 0 0;font-size:1rem">Мёд с семейной пасеки в Меркенском районе. Собираем, качаем и разливаем сами.</p>
+      </div>
+      <div>
+        <h4>Магазин</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Каталог</a></li>
+          <li><a href="cart.html">Корзина</a></li>
+          <li><a href="dashboard.html">Личный кабинет</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#about">О пасеке</a></li>
+          <li><a href="index.html#gallery">Галерея</a></li>
+          <li><a href="index.html#reviews">Отзывы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <div id="footerContacts"></div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Mr.Bee. </div>
+  </div>
+</footer>
+
+<div id="modalRoot"></div>
+<div id="toast-wrap"></div>
+
+<script type="module" src="js/catalog.js"></script>
+</body>
+</html>

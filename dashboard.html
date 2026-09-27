@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Личный кабинет — Mr.Bee</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-protected="true">
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="img/logo.svg" alt="Mr.Bee" class="brand-logo" />
+      Mr.Bee
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Каталог</a>
+      <a href="index.html#about">О пасеке</a>
+      <a href="index.html#gallery">Галерея</a>
+      <a href="index.html#reviews">Отзывы</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <form class="header-search" id="headerSearchForm">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="headerSearchInput" placeholder="Найти мёд…" autocomplete="off" />
+      <div class="search-dropdown" id="searchDropdown" hidden></div>
+    </form>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" title="Корзина">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="badge" id="cartBadge" hidden>0</span>
+      </a>
+      <div id="authArea"></div>
+      <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Меню">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding:44px 24px 80px">
+
+  <div id="authGate" class="auth-gate" hidden>
+    <h2>Личный кабинет доступен после входа</h2>
+    <p class="muted">Войдите или зарегистрируйтесь, чтобы увидеть заказы и отзывы.</p>
+    <button class="btn btn-primary" id="gateLoginBtn">Войти</button>
+  </div>
+
+  <div id="dashboardContent" hidden>
+    <h1 id="greeting">Личный кабинет</h1>
+
+    <div class="tab-nav">
+      <button class="active" data-tab="orders">История заказов</button>
+      <button data-tab="reviews">Мои отзывы</button>
+      <button data-tab="profile">Профиль</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-orders">
+      <div id="ordersList"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-reviews">
+      <div id="myReviewsList"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-profile">
+      <div style="max-width:420px">
+        <h3 class="mt-0">Данные профиля</h3>
+        <form id="profileForm">
+          <div class="field"><label for="profileName">Имя</label><input id="profileName" required /></div>
+          <div class="field"><label for="profileEmail">Email</label><input id="profileEmail" disabled /></div>
+          <div class="field"><label for="profilePhone">Телефон</label><input id="profilePhone" placeholder="+7 900 000-00-00" /></div>
+          <button class="btn btn-primary" type="submit">Сохранить</button>
+        </form>
+        <hr class="divider" />
+        <h3>Смена пароля</h3>
+        <form id="passwordForm">
+          <div class="field"><label for="oldPassword">Текущий пароль</label><input id="oldPassword" type="password" required /></div>
+          <div class="field"><label for="newPassword">Новый пароль</label><input id="newPassword" type="password" required minlength="6" /></div>
+          <div class="field-error" id="passwordError" hidden></div>
+          <button class="btn btn-outline" type="submit">Сменить пароль</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" id="contacts">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:var(--ivory)">
+          <img src="img/logo.svg" alt="Mr.Bee" class="brand-logo" /> Mr.Bee
+        </a>
+        <p style="color:var(--ivory-deep);opacity:.8;margin:14px 0 0;font-size:1rem">Мёд с семейной пасеки в Меркенском районе.</p>
+      </div>
+      <div>
+        <h4>Магазин</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Каталог</a></li>
+          <li><a href="cart.html">Корзина</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#about">О пасеке</a></li>
+          <li><a href="index.html#reviews">Отзывы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <div id="footerContacts"></div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Mr.Bee. </div>
+  </div>
+</footer>
+
+<div id="modalRoot"></div>
+<div id="toast-wrap"></div>
+
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
